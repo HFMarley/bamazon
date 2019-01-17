@@ -20,7 +20,7 @@ function start() {
     connection.query ("SELECT * FROM products", function(err, res) {
         if (err) throw err;
         for (var i = 0; i < res.length; i++) {
-            console.log("\ID: " + res[i].id + " Product: " + res[i].product_name + " Price: " + "$" + res[i].price + " Quantity: " + res[i].stock_quantity);
+            console.log("\ID:" + res[i].id + " Product:" + res[i].product_name + ";" + " Price:" + "$" + res[i].price + ";" + " Quantity:" + res[i].stock_quantity);
         }
         shop()
     });
@@ -41,7 +41,7 @@ function shop() {
             var goodID = [1,2,3,4,5,6,7,8,9,10];
             var choiceID = parseInt(answer.ID);
             chosenItem = res[choiceID - 1];
-            console.log(chosenItem, res)
+            console.log(chosenItem)
 
             if(goodID.includes(choiceID) === true) {
                 quantify();
@@ -64,8 +64,8 @@ function quantify() {
         }
     ]).then(quant => {
         choiceQuantity = parseInt(quant.quantity);
-        console.log(chosenItem)
-        console.log(choiceQuantity , chosenItem.stock_quantity)
+        // console.log(chosenItem)
+        // console.log(choiceQuantity , chosenItem.stock_quantity)
         if (choiceQuantity <= chosenItem.stock_quantity) {
             console.log("You have selected " + chosenItem.product_name + " with a quantity of " + choiceQuantity + ".");
             console.log("Quantity: " + chosenItem.stock_quantity + " Name: " + chosenItem.product_name + " " + chosenItem.id);
